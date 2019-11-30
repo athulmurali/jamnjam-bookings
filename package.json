@@ -1,0 +1,31 @@
+{
+  "name": "jamnjam-bookings",
+  "version": "1.0.0",
+  "description": "A repo for bookings micro-service",
+  "main": "server.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/athulmurali/jamnjam-bookings.git"
+  },
+  "keywords": [
+    "mongo",
+    "mongoose",
+    "nodeJs",
+    "Javascript",
+    "server",
+    "micro-service"
+  ],
+  "author": "Athul Muralidharan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/athulmurali/jamnjam-bookings/issues"
+  },
+  "homepage": "https://github.com/athulmurali/jamnjam-bookings#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  }
+}
