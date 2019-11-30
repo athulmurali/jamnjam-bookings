@@ -1,3 +1,6 @@
+const { loggers } = require('winston')
+
+const logger = loggers.get('my-logger');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -30,8 +33,8 @@ BookingSchema.path('dateAndTime').validate(
     async function (value) {
 
         const self = this;
-        console.log("BookingSchema")
-        console.log(value)
+        logger.info("BookingSchema")
+        logger.info(value)
         try
         {
             const docs =
@@ -43,13 +46,13 @@ BookingSchema.path('dateAndTime').validate(
                         {endDateAndTime: {$lte: self.endDateAndTime, $gt: self.dateAndTime}}
                     ]
                 });
-            console.log(docs);
+            logger.info(docs);
 
             return (!docs || docs.length === 0);
 
         }
         catch (err){
-            console.log(err)
+            logger.info(err)
             return false
         }
 

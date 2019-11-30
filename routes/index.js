@@ -1,3 +1,6 @@
+const { loggers } = require('winston')
+const logger = loggers.get('my-logger');
+
 const express = require('express');
 const bookings = require('./bookings');
 const router = express.Router();

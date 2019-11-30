@@ -1,3 +1,6 @@
+const { loggers } = require('winston')
+const logger = loggers.get('my-logger');
+
 const Booking = require('../models/booking');
 // const ARTIST = require("../../const/role").ARTIST;
 const ARTIST =  'ARTIST';
@@ -50,7 +53,7 @@ exports.getById = function (req, res) {
 exports.getByUser = async function (req, res) {
 
     try {
-        console.log("User request after authentication");
+        logger.info("User request after authentication");
         let fieldToSearch = 'user.id';
         let userId = req.user.id;
 
@@ -58,13 +61,13 @@ exports.getByUser = async function (req, res) {
         if (req.user.role === ARTIST)
             fieldToSearch = 'with';
 
-        console.log("query" , {[fieldToSearch]: userId});
+        logger.info("query" , {[fieldToSearch]: userId});
         const query = {[fieldToSearch]: userId};
         const bookings = await Booking.find(query).sort('-dateAndTime');
         res.status(HttpStatus.OK).send(bookings);
 
     } catch (e) {
-        console.error(e);
+        logger.error(e);
         res.status(HttpStatus.BAD_REQUEST).send({message: "Something went wrong!", details: e});
     }
 
